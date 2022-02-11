@@ -13,17 +13,11 @@ http_archive(
 )
 
 http_archive(
-    name = "io_bazel_rules_go",  # v0.26.0 / 2021-03-08
-    # Patch raw PKCS #1 support into rules_go's copy of googleapis.
-    patch_args = [
-        "-E",
-        "-p1",
-    ],
-    patches = ["//:third_party/rules_go.patch"],
-    sha256 = "7c10271940c6bce577d51a075ae77728964db285dac0a46614a7934dc34303e6",
+    name = "io_bazel_rules_go",
+    sha256 = "d6b2513456fe2229811da7eb67a444be7785f5323c6708b38d851d2b51e54d83",
     urls = [
-        "https://mirror.bazel.build/github.com/bazelbuild/rules_go/releases/download/v0.26.0/rules_go-v0.26.0.tar.gz",
-        "https://github.com/bazelbuild/rules_go/releases/download/v0.26.0/rules_go-v0.26.0.tar.gz",
+        "https://mirror.bazel.build/github.com/bazelbuild/rules_go/releases/download/v0.30.0/rules_go-v0.30.0.zip",
+        "https://github.com/bazelbuild/rules_go/releases/download/v0.30.0/rules_go-v0.30.0.zip",
     ],
 )
 
@@ -75,9 +69,9 @@ http_archive(
 
 http_archive(
     name = "com_google_protobuf",  # 2021-03-02
-    sha256 = "c006a8b936442237f8b4e08e9758c5bf47affb44c4c99130d1c3011b3ac98095",
-    strip_prefix = "protobuf-3172ab8ff97aab005d7734627409faa166174232",
-    url = "https://github.com/protocolbuffers/protobuf/archive/3172ab8ff97aab005d7734627409faa166174232.zip",
+    sha256 = "25680843adf0c3302648d35f744e38cc3b6b05a6c77a927de5aea3e1c2e36106",
+    strip_prefix = "protobuf-3.19.4",
+    url = "https://github.com/protocolbuffers/protobuf/archive/v3.19.4.zip",
 )
 
 # Keep this sync'd to the version used in rules_go, above. Otherwise, we're
@@ -193,7 +187,7 @@ load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_depe
 
 go_rules_dependencies()
 
-go_register_toolchains("1.16.1")
+go_register_toolchains("1.17.6")
 
 load("@io_bazel_rules_go//extras:embed_data_deps.bzl", "go_embed_data_dependencies")
 
