@@ -11,6 +11,7 @@ go_library(
     importpath = "cloud.google.com/kms/oss/fakekms/fault",
     deps = [
         ":fault_go_proto",
+        ":math_go_proto",
         "@org_golang_google_grpc//:go_default_library",
         "@org_golang_google_grpc//codes:go_default_library",
         "@org_golang_google_grpc//status:go_default_library",
@@ -64,13 +65,11 @@ cc_grpc_library(
 
 proto_library(
     name = "math_proto",
-    testonly = True,
     srcs = ["math.proto"],
 )
 
 go_proto_library(
     name = "math_go_proto",
-    testonly = True,
     compilers = ["@io_bazel_rules_go//proto:go_grpc"],
     importpath = "cloud.google.com/kms/oss/fakekms/fault/mathpb",
     proto = ":math_proto",
